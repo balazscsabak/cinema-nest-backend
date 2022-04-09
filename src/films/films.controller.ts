@@ -38,8 +38,6 @@ export class FilmsController {
     const cacheValue: Film[] = await this.cacheManager.get(today);
 
     if (cacheValue) {
-      console.log('Cache found and returned it');
-
       return cacheValue;
     }
 
@@ -51,6 +49,7 @@ export class FilmsController {
           description: film.overview,
           posterPath: film.poster_path,
           releaseDate: film.release_date,
+          playTime: 120,
         });
       }),
     );
@@ -58,10 +57,8 @@ export class FilmsController {
     const getFilms = await this.filmsService.findAll();
 
     await this.cacheManager.set(today, getFilms, {
-      ttl: 1000,
+      ttl: 10,
     });
-
-    console.log('Cache did NOT found, saved it');
 
     return getFilms;
   }

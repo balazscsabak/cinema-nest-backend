@@ -12,7 +12,12 @@ export class FilmsService {
   ) {}
 
   findAll(): Promise<Film[]> {
-    return this.filmsRepository.find();
+    return this.filmsRepository.find({
+      take: 5,
+      order: {
+        id: 'DESC',
+      },
+    });
   }
 
   findById(id: number): Promise<Film> {
@@ -34,6 +39,7 @@ export class FilmsService {
       description: createFilmDto.description,
       posterPath: process.env.EXTERNAL_IMAGE_URL + createFilmDto.posterPath,
       releaseDate: createFilmDto.releaseDate,
+      playTime: createFilmDto.playTime,
     });
 
     return this.filmsRepository.save(newFilm);

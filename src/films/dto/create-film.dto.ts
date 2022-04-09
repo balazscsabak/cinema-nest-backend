@@ -4,4 +4,5 @@ export class CreateFilmDto {
   description: string;
   posterPath: string;
   releaseDate: string;
+  playTime: number;
 }

@@ -5,6 +5,8 @@ import { AppService } from './app.service';
 import { FilmsModule } from './films/films.module';
 import { ConfigModule } from '@nestjs/config';
 import { SessionsModule } from './sessions/sessions.module';
+import { HallsModule } from './halls/halls.module';
+import { ReservationsModule } from './reservations/reservations.module';
 import ormConfig from 'config/orm.config';
 
 @Module({
@@ -16,6 +18,8 @@ import ormConfig from 'config/orm.config';
       isGlobal: true,
     }),
     SessionsModule,
+    HallsModule,
+    ReservationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
