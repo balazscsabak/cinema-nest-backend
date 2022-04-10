@@ -1,0 +1,17 @@
+services:
+  backend:
+    image: balazscsabak/cinema-nest-backend:0.0.1
+    container_name: cinema-nest-backend
+    ports:
+      - "3011:3001"
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.blog.rule=Host(`cinema-nest.balazscsabak.hu`)
+      - traefik.http.routers.blog.tls=true
+      - traefik.http.routers.blog.tls.certresolver=lets-encrypt
+      - traefik.port=3011
+    network_mode: "proxy-network"
+networks:
+  proxy-network:
+    external: true
