@@ -7,9 +7,9 @@ services:
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.http.routers.blog.rule=Host(`cinema-nest.balazscsabak.hu`)
-      - traefik.http.routers.blog.tls=true
-      - traefik.http.routers.blog.tls.certresolver=lets-encrypt
+      - traefik.http.routers.cinema-nest.rule=Host(`cinema-nest.balazscsabak.hu`)
+      - traefik.http.routers.cinema-nest.tls=true
+      - traefik.http.routers.cinema-nest.tls.certresolver=lets-encrypt
       - traefik.port=3011
     network_mode: "proxy-network"
 networks:
